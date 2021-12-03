@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.devsuperior.movieflix.entities.Genre;
 import com.devsuperior.movieflix.entities.Movie;
+import com.devsuperior.movieflix.entities.Review;
 
 public class MovieDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -43,6 +43,11 @@ public class MovieDTO implements Serializable{
 		imgUrl = entity.getImgUrl();
 		synopsis = entity.getSynopsis();
 		genre = new GenreDTO(entity.getGenre());
+	}
+	
+	public MovieDTO(Movie entity, List<Review> reviews) {
+		this(entity);
+		reviews.forEach(rev -> this.reviews.add(new ReviewDTO(rev)));		
 	}	
 
 	public Long getId() {
