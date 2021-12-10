@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.devsuperior.movieflix.entities.Genre;
 import com.devsuperior.movieflix.entities.Movie;
+import com.devsuperior.movieflix.entities.Review;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
@@ -22,5 +23,10 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 	
 	@Query("SELECT  obj FROM Movie obj JOIN FETCH obj.genre WHERE obj IN :movies")
 	List<Movie> findMoviesWithgenre(List<Movie> movies);
+	
+	@Query("SELECT obj FROM Review obj "
+			+ "WHERE "
+			+ "movie_id = :movieId ")
+			List<Review> findAllReviewByMovieId(Long movieId);
 
 }

@@ -34,7 +34,7 @@ public class UserDTO implements Serializable{
 	public UserDTO(User entity) {
 		id = entity.getId();
 		email = entity.getEmail();
-		name = entity.getUsername();
+		name = entity.getName();
 		roles = entity.getRoles();
 		reviews = entity.getReviews();
 	}
